@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "common" },
+    { "path": "director" },
+    { "path": "frontend" },
+    { "path": "match-function" }
+  ]
+}

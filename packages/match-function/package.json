@@ -1,0 +1,14 @@
+{
+  "name": "@node-open-match/match-function",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_CONFIG_DIR=../../config node ./lib/index.js",
+    "debug": "cross-env NODE_CONFIG_DIR=../../config node --inspect=0.0.0.0:10100 ./lib/index.js"
+  },
+  "dependencies": {
+  }
+}
