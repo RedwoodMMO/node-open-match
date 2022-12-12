@@ -1,0 +1,2 @@
+open-match:
+  http-endpoint: "open-match-frontend.open-match.svc.cluster.local:50504"
