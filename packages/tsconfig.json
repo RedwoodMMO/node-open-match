@@ -1,6 +1,7 @@
 {
   "files": [],
   "references": [
+    { "path": "api" },
     { "path": "common" },
     { "path": "director" },
     { "path": "frontend" },
