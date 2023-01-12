@@ -1,8 +1,11 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import { basePath, openmatchAcknowledgeBackfillRequest, openmatchAcknowledgeBackfillResponse, openmatchBackfill, openmatchCreateBackfillRequest, openmatchCreateTicketRequest, openmatchTicket, openmatchUpdateBackfillRequest } from './common';
+import config from "config";
+import { openmatchAcknowledgeBackfillRequest, openmatchAcknowledgeBackfillResponse, openmatchBackfill, openmatchCreateBackfillRequest, openmatchCreateTicketRequest, openmatchTicket, openmatchUpdateBackfillRequest } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
+
+const basePath = config.get<string>("open-match.frontend.endpoint");
 
 // customer definition
 // empty

@@ -1,0 +1,31 @@
+apiVersion: skaffold/v4beta1
+kind: Config
+metadata:
+  name: node-open-match
+# deploy:
+  # kubectl:
+  #   flags:
+  #     apply:
+  #       - "--namespace=default"
+  #   remoteManifests:
+  # helm:
+  #   releases:
+  #     - name: open-match
+  #       remoteChart: https://open-match.dev/chart/stable/open-match/open-match
+  #       setValues:
+  #         image.open-match-customize.enabled: true
+  #         image.open-match-customize.evaluator.enabled: true
+  #         image.open-match-override.enabled: true
+build:
+  artifacts:
+    - image: om-node
+      docker:
+        dockerfile: config/docker/om-node/Dockerfile
+  local:
+    push: false
+manifests:
+  rawYaml:
+    - https://open-match.dev/install/v1.6.0/yaml/01-open-match-core.yaml
+    - https://open-match.dev/install/v1.6.0/yaml/06-open-match-override-configmap.yaml
+    - https://open-match.dev/install/v1.6.0/yaml/07-open-match-default-evaluator.yaml
+    - config/k8s/dev.yaml

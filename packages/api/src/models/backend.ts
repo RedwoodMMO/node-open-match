@@ -1,8 +1,11 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import { basePath, openmatchAssignTicketsRequest, openmatchAssignTicketsResponse, openmatchFetchMatchesRequest, openmatchReleaseAllTicketsRequest, openmatchReleaseAllTicketsResponse, openmatchReleaseTicketsRequest, openmatchReleaseTicketsResponse } from './common';
+import config from "config";
+import { openmatchAssignTicketsRequest, openmatchAssignTicketsResponse, openmatchFetchMatchesRequest, openmatchReleaseAllTicketsRequest, openmatchReleaseAllTicketsResponse, openmatchReleaseTicketsRequest, openmatchReleaseTicketsResponse } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
+
+const basePath = config.get<string>("open-match.backend.endpoint");
 
 // customer definition
 // empty

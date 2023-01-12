@@ -1,21 +1,15 @@
-import {
-  openmatchMatch,
-  openmatchMatchProfile,
-  openmatchRunRequest,
-  openmatchTicket,
-  QueryServiceService,
-} from "@node-open-match/api";
+import { openmatchMatchProfile, openmatchTicket } from "@node-open-match/api";
+import { Writable } from "stream";
 import { v4 as uuidv4 } from "uuid";
 
 const matchName = "basic-matchfunction";
 const ticketsPerPoolPerMatch = 4;
 
-export function makeMatches(
+export function makeAndStreamMatches(
   profile: openmatchMatchProfile,
-  poolTickets: Map<string, openmatchTicket[]>
-): openmatchMatch[] {
-  const matches: openmatchMatch[] = [];
-
+  poolTickets: Map<string, openmatchTicket[]>,
+  output: Writable
+) {
   // eslint-disable-next-line no-constant-condition
   while (true) {
     let insufficientTickets = false;
@@ -37,34 +31,17 @@ export function makeMatches(
       break;
     }
 
-    matches.push({
-      match_id: `profile-${profile.name}-${uuidv4()}`,
-      match_profile: profile.name,
-      match_function: matchName,
-      tickets: matchTickets,
-    });
-  }
-
-  return matches;
-}
-
-export async function run(request: openmatchRunRequest) {
-  console.log(`Generating proposals for function ${request.profile?.name}`);
-
-  for (const pool of request.profile!.pools!) {
-    const res = await QueryServiceService.queryServiceQueryTickets({
-      body: {
-        pool,
-      },
-    });
-    console.log(res);
-  }
-
-  const poolTickets = new Map<string, openmatchTicket[]>(); // todo
-
-  const proposals = makeMatches(request.profile!, poolTickets);
-
-  for (const proposal of proposals) {
-    // todo: stream proposal over?
+    output.write(
+      JSON.stringify({
+        result: {
+          proposal: {
+            match_id: `profile-${profile.name}-${uuidv4()}`,
+            match_profile: profile.name,
+            match_function: matchName,
+            tickets: matchTickets,
+          },
+        },
+      })
+    );
   }
 }

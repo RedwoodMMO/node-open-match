@@ -1,2 +1,12 @@
 open-match:
-  http-endpoint: "open-match-frontend.open-match.svc.cluster.local:50504"
+  # this is the REST endpoint for the deployed OpenMatch container
+  frontend:
+    endpoint: "http://open-match-frontend.open-match.svc.cluster.local:51504"
+  backend:
+    endpoint: "http://open-match-backend.open-match.svc.cluster.local:51505"
+  query:
+    endpoint: "http://open-match-query.open-match.svc.cluster.local:51503"
+
+match-function:
+  host: "http://match-function.default.svc.cluster.local"
+  port: 3333

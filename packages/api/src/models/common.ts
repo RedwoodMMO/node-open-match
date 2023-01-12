@@ -1,10 +1,6 @@
 /** Generate by swagger-axios-codegen */
 // @ts-nocheck
 /* eslint-disable */
-import config from "config";
-
-export const basePath = config.get<string>("open-match.http-endpoint");
-
 export type IList<T> = Array<T>;
 export type List<T> = Array<T>;
 export interface IDictionary<TValue> {

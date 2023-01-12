@@ -1,0 +1,11 @@
+.data
+node_modules
+packages/*/node_modules
+packages/*/lib
+packages/*/tsconfig.tsbuildinfo
+.git
+Dockerfile
+docker-compose.yaml
+.vscode
+config/docker
+config/k8s

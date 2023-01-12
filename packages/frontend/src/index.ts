@@ -1,3 +1,5 @@
+import config from "config";
+import waitOn from "wait-on";
 import { FrontendServiceService, openmatchTicket } from "@node-open-match/api";
 import { makeTicket } from "./ticket";
 
@@ -37,6 +39,11 @@ async function deleteOnAssign(ticket: openmatchTicket) {
 }
 
 (async () => {
+  await waitOn({
+    resources: [config.get<string>("open-match.frontend.endpoint")],
+    validateStatus: (status) => status === 404,
+  });
+
   // eslint-disable-next-line no-constant-condition
   while (true) {
     for (let i = 0; i < ticketsPerIter; i++) {
@@ -58,6 +65,6 @@ async function deleteOnAssign(ticket: openmatchTicket) {
       deleteOnAssign(ticket);
     }
 
-    await sleep(2);
+    await sleep(5);
   }
 })();

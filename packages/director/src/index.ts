@@ -1,11 +1,13 @@
 import config from "config";
 import {
   BackendServiceService,
+  openmatchFetchMatchesResponse,
   openmatchFunctionConfigType,
   openmatchMatch,
   openmatchMatchProfile,
 } from "@node-open-match/api";
 import { randomInt } from "crypto";
+import waitOn from "wait-on";
 import { generateProfiles } from "./profile";
 
 async function sleep(seconds: number): Promise<void> {
@@ -25,8 +27,33 @@ async function fetch(
       },
     },
   });
-  console.log(res);
-  return [];
+
+  type ResponseWrapper = {
+    result: openmatchFetchMatchesResponse;
+  };
+
+  if (typeof res === "string") {
+    const lines = res.split("\n");
+    const nonEmptyLines = lines.filter((line) => line.trim() !== "");
+
+    const finalResult: ResponseWrapper[] = JSON.parse(
+      `[${nonEmptyLines.join(",")}]`
+    );
+
+    const matches: openmatchMatch[] = finalResult
+      .filter((response) => typeof response.result.match !== "undefined")
+      .map((response) => {
+        return response.result.match!;
+      });
+
+    return matches;
+  } else {
+    if (typeof res.error !== "undefined") {
+      throw new Error(res.error.message);
+    } else {
+      return [(res as ResponseWrapper).result.match!];
+    }
+  }
 }
 
 async function assign(matches: openmatchMatch[]) {
@@ -37,6 +64,10 @@ async function assign(matches: openmatchMatch[]) {
       for (const ticket of match.tickets) {
         ticketIDs.push(ticket.id!);
       }
+    }
+
+    if (ticketIDs.length === 0) {
+      continue;
     }
 
     const connectionString = `${randomInt(256)}.${randomInt(256)}.${randomInt(
@@ -67,6 +98,11 @@ async function assign(matches: openmatchMatch[]) {
 }
 
 (async () => {
+  await waitOn({
+    resources: [config.get<string>("open-match.backend.endpoint")],
+    validateStatus: (status) => status === 404,
+  });
+
   const profiles = generateProfiles();
   console.log(`Fetching matches for ${profiles.length} profiles`);
 
@@ -91,7 +127,7 @@ async function assign(matches: openmatchMatch[]) {
         return assign(matches);
       });
 
-      promises.push(fetch(profile));
+      promises.push(promise);
     }
 
     await Promise.all(promises);

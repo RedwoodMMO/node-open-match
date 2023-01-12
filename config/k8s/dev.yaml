@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-director
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: director
+  template:
+    metadata:
+      labels:
+        app: director
+    spec:
+      containers:
+        - name: director
+          image: om-node
+          command: ["bash"]
+          args: ["-lc", "yarn start:director"]
+          # resources:
+          #   limits:
+          #     cpu: "1.0"
+          #     memory: "128Mi"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: om-node
+          command: ["bash"]
+          args: ["-lc", "yarn start:frontend"]
+          # resources:
+          #   limits:
+          #     cpu: "1.0"
+          #     memory: "128Mi"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: match-function
+spec:
+  selector:
+    app: match-function
+  ports:
+    - port: 3333
+      targetPort: 3333
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: om-match-function
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: match-function
+  template:
+    metadata:
+      labels:
+        app: match-function
+    spec:
+      containers:
+        - name: match-function
+          image: om-node
+          command: ["bash"]
+          args: ["-lc", "yarn start:match-function"]
+          # resources:
+          #   limits:
+          #     cpu: "1.0"
+          #     memory: "128Mi"

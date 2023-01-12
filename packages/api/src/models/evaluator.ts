@@ -1,8 +1,11 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import { basePath, openmatchEvaluateRequest } from './common';
+import config from "config";
+import { openmatchEvaluateRequest } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
+
+const basePath = config.get<string>("open-match.backend.endpoint");
 
 // customer definition
 // empty
