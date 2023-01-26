@@ -18,7 +18,8 @@
     "add:dep:dev": "node scripts/add-sub-dependency.js true",
     "start:director": "cd packages/director && yarn start",
     "start:frontend": "cd packages/frontend && yarn start",
-    "start:match-function": "cd packages/match-function && yarn start"
+    "start:match-function": "cd packages/match-function && yarn start",
+    "publish:api": "yarn build && yarn publish --access public ./packages/api"
   },
   "dependencies": {
     "async-sema": "^3.1.1",

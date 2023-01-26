@@ -1,10 +1,15 @@
 {
-  "name": "@node-open-match/api",
-  "version": "1.0.0",
+  "name": "@open-match/api",
+  "version": "1.0.2",
   "description": "",
   "main": "lib/index.js",
   "license": "MIT",
-  "private": true,
+  "homepage": "https://github.com/RedwoodFramework/node-open-match/tree/main/packages/api",
+  "repository": {
+    "url": "https://github.com/RedwoodFramework/node-open-match.git",
+    "type": "git"
+  },
+  "private": false,
   "scripts": {
     "generate:api": "ts-node scripts/generate-api.ts"
   },
