@@ -10,6 +10,6 @@
     "debug": "cross-env NODE_CONFIG_DIR=../../config node --inspect=0.0.0.0:10100 ./lib/index.js"
   },
   "dependencies": {
-    "@open-match/api": "1.0.0"
+    "@open-match/api": "1.0.5"
   }
 }
