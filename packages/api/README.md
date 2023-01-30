@@ -13,6 +13,8 @@ Below is a showing which version of Open Match API a given NPM version is. Ultim
 | 1.0.0 | 1.6.0      |
 | 1.0.1 | 1.6.0      |
 | 1.0.2 | 1.6.0      |
+| 1.0.3 | 1.6.0      |
+| 1.0.4 | 1.6.0      |
 
 ## Bugs Ahead!
 

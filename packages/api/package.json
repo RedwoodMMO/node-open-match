@@ -1,8 +1,9 @@
 {
   "name": "@open-match/api",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "homepage": "https://github.com/RedwoodFramework/node-open-match/tree/main/packages/api",
   "repository": {
