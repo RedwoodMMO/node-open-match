@@ -1,11 +1,8 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import config from "config";
 import { openmatchAcknowledgeBackfillRequest, openmatchAcknowledgeBackfillResponse, openmatchBackfill, openmatchCreateBackfillRequest, openmatchCreateTicketRequest, openmatchTicket, openmatchUpdateBackfillRequest } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
-
-const basePath = config.get<string>("open-match.frontend.endpoint");
 
 // customer definition
 // empty
@@ -21,10 +18,10 @@ messages are not finalized and still subject to possible change or removal.
       /**  */
       body: openmatchCreateBackfillRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchBackfill> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/backfills';
+      let url = options.url + '/v1/frontendservice/backfills';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -46,10 +43,10 @@ messages are not finalized and still subject to possible change or removal.
       /**  */
       body: openmatchUpdateBackfillRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchBackfill> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/backfills';
+      let url = options.url + '/v1/frontendservice/backfills';
 
       const configs: IRequestConfig = getConfigs('patch', 'application/json', url, options);
 
@@ -70,10 +67,10 @@ messages are not finalized and still subject to possible change or removal.
       /** An existing ID of Backfill to retrieve. */
       backfillId: string;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchBackfill> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/backfills/{backfill_id}';
+      let url = options.url + '/v1/frontendservice/backfills/{backfill_id}';
       url = url.replace('{backfill_id}', params['backfillId'] + '');
 
       const configs: IRequestConfig = getConfigs('get', 'application/json', url, options);
@@ -94,10 +91,10 @@ messages are not finalized and still subject to possible change or removal.
       /** An existing ID of Backfill to delete. */
       backfillId: string;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any | null> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/backfills/{backfill_id}';
+      let url = options.url + '/v1/frontendservice/backfills/{backfill_id}';
       url = url.replace('{backfill_id}', params['backfillId'] + '');
 
       const configs: IRequestConfig = getConfigs('delete', 'application/json', url, options);
@@ -122,10 +119,10 @@ messages are not finalized and still subject to possible change or removal.
       /**  */
       body: openmatchAcknowledgeBackfillRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchAcknowledgeBackfillResponse> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/backfills/{backfill_id}/acknowledge';
+      let url = options.url + '/v1/frontendservice/backfills/{backfill_id}/acknowledge';
       url = url.replace('{backfill_id}', params['backfillId'] + '');
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
@@ -148,10 +145,10 @@ A ticket is considered as ready for matchmaking once it is created.
       /**  */
       body: openmatchCreateTicketRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchTicket> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/tickets';
+      let url = options.url + '/v1/frontendservice/tickets';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -170,10 +167,10 @@ A ticket is considered as ready for matchmaking once it is created.
       /** A TicketId of a generated Ticket. */
       ticketId: string;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchTicket> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/tickets/{ticket_id}';
+      let url = options.url + '/v1/frontendservice/tickets/{ticket_id}';
       url = url.replace('{ticket_id}', params['ticketId'] + '');
 
       const configs: IRequestConfig = getConfigs('get', 'application/json', url, options);
@@ -192,10 +189,10 @@ The client should delete the Ticket when finished matchmaking with it.
       /** A TicketId of a generated Ticket to be deleted. */
       ticketId: string;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any | null> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/tickets/{ticket_id}';
+      let url = options.url + '/v1/frontendservice/tickets/{ticket_id}';
       url = url.replace('{ticket_id}', params['ticketId'] + '');
 
       const configs: IRequestConfig = getConfigs('delete', 'application/json', url, options);
@@ -216,10 +213,10 @@ The client should delete the Ticket when finished matchmaking with it.
       /** A TicketId of a generated Ticket to get updates on. */
       ticketId: string;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/frontendservice/tickets/{ticket_id}/assignments';
+      let url = options.url + '/v1/frontendservice/tickets/{ticket_id}/assignments';
       url = url.replace('{ticket_id}', params['ticketId'] + '');
 
       const configs: IRequestConfig = getConfigs('get', 'application/json', url, options);

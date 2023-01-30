@@ -16,11 +16,16 @@ async function QueryPools(
   const poolTickets = new Map<string, openmatchTicket[]>();
 
   for (const pool of pools) {
-    const res = await QueryServiceService.queryServiceQueryTickets({
-      body: {
-        pool,
+    const res = await QueryServiceService.queryServiceQueryTickets(
+      {
+        body: {
+          pool,
+        },
       },
-    });
+      {
+        url: config.get<string>("open-match.query.endpoint"),
+      }
+    );
 
     type ResponseWrapper = {
       result: openmatchQueryTicketsResponse;

@@ -17,16 +17,21 @@ async function sleep(seconds: number): Promise<void> {
 async function fetch(
   profile: openmatchMatchProfile
 ): Promise<openmatchMatch[]> {
-  const res = await BackendServiceService.backendServiceFetchMatches({
-    body: {
-      profile,
-      config: {
-        host: config.get<string>("match-function.host"),
-        port: config.get<number>("match-function.port"),
-        type: openmatchFunctionConfigType.REST,
+  const res = await BackendServiceService.backendServiceFetchMatches(
+    {
+      body: {
+        profile,
+        config: {
+          host: config.get<string>("match-function.host"),
+          port: config.get<number>("match-function.port"),
+          type: openmatchFunctionConfigType.REST,
+        },
       },
     },
-  });
+    {
+      url: config.get<string>("open-match.backend.endpoint"),
+    }
+  );
 
   type ResponseWrapper = {
     result: openmatchFetchMatchesResponse;
@@ -74,18 +79,23 @@ async function assign(matches: openmatchMatch[]) {
       256
     )}.${randomInt(256)}:2222`;
 
-    const res = await BackendServiceService.backendServiceAssignTickets({
-      body: {
-        assignments: [
-          {
-            ticket_ids: ticketIDs,
-            assignment: {
-              connection: connectionString,
+    const res = await BackendServiceService.backendServiceAssignTickets(
+      {
+        body: {
+          assignments: [
+            {
+              ticket_ids: ticketIDs,
+              assignment: {
+                connection: connectionString,
+              },
             },
-          },
-        ],
+          ],
+        },
       },
-    });
+      {
+        url: config.get<string>("open-match.backend.endpoint"),
+      }
+    );
 
     if (res.failures) {
       for (const failure of res.failures) {

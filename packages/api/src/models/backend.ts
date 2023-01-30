@@ -1,11 +1,8 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import config from "config";
 import { openmatchAssignTicketsRequest, openmatchAssignTicketsResponse, openmatchFetchMatchesRequest, openmatchReleaseAllTicketsRequest, openmatchReleaseAllTicketsResponse, openmatchReleaseTicketsRequest, openmatchReleaseTicketsResponse } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
-
-const basePath = config.get<string>("open-match.backend.endpoint");
 
 // customer definition
 // empty
@@ -23,10 +20,10 @@ pending, and will not be returned by query.
       /**  */
       body: openmatchFetchMatchesRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/backendservice/matches:fetch';
+      let url = options.url + '/v1/backendservice/matches:fetch';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -45,10 +42,10 @@ pending, and will not be returned by query.
       /**  */
       body: openmatchAssignTicketsRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchAssignTicketsResponse> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/backendservice/tickets:assign';
+      let url = options.url + '/v1/backendservice/tickets:assign';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -70,10 +67,10 @@ messages are not finalized and still subject to possible change or removal.
       /**  */
       body: openmatchReleaseTicketsRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchReleaseTicketsResponse> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/backendservice/tickets:release';
+      let url = options.url + '/v1/backendservice/tickets:release';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -96,10 +93,10 @@ messages are not finalized and still subject to possible change or removal.
       /**  */
       body: openmatchReleaseAllTicketsRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<openmatchReleaseAllTicketsResponse> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/backendservice/tickets:releaseall';
+      let url = options.url + '/v1/backendservice/tickets:releaseall';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 

@@ -6,6 +6,7 @@ import axiosStatic, { AxiosInstance, AxiosRequestConfig } from 'axios';
 export interface IRequestOptions extends AxiosRequestConfig {
   /** only in axios interceptor config*/
   loading?: boolean;
+  url: string;
 }
 
 export interface IRequestConfig {

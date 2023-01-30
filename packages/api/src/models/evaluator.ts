@@ -1,11 +1,8 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import config from "config";
 import { openmatchEvaluateRequest } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
-
-const basePath = config.get<string>("open-match.backend.endpoint");
 
 // customer definition
 // empty
@@ -19,10 +16,10 @@ export class EvaluatorService {
       /**  (streaming inputs) */
       body: openmatchEvaluateRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/evaluator/matches:evaluate';
+      let url = options.url + '/v1/evaluator/matches:evaluate';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 

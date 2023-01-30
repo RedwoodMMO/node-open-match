@@ -1,11 +1,8 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import config from "config";
 import { openmatchQueryBackfillsRequest, openmatchQueryTicketIdsRequest, openmatchQueryTicketsRequest } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
-
-const basePath = config.get<string>("open-match.query.endpoint");
 
 // customer definition
 // empty
@@ -21,10 +18,10 @@ messages are not finalized and still subject to possible change or removal.
       /**  */
       body: openmatchQueryBackfillsRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/queryservice/backfills:query';
+      let url = options.url + '/v1/queryservice/backfills:query';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -46,10 +43,10 @@ QueryTicketIds pages the TicketIDs by `queryPageSize` and stream back responses.
       /**  */
       body: openmatchQueryTicketIdsRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/queryservice/ticketids:query';
+      let url = options.url + '/v1/queryservice/ticketids:query';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
@@ -71,10 +68,10 @@ QueryTickets pages the Tickets by `queryPageSize` and stream back responses.
       /**  */
       body: openmatchQueryTicketsRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/queryservice/tickets:query';
+      let url = options.url + '/v1/queryservice/tickets:query';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 

@@ -1,11 +1,8 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 
-import config from "config";
 import { openmatchRunRequest } from './common';
 import { IRequestOptions, IRequestConfig, getConfigs, axios } from './serviceOptions';
-
-const basePath = config.get<string>("open-match.backend.endpoint");
 
 // customer definition
 // empty
@@ -22,10 +19,10 @@ match candidates to the Backend service.
       /**  */
       body: openmatchRunRequest;
     } = {} as any,
-    options: IRequestOptions = {}
+    options: IRequestOptions
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/v1/matchfunction:run';
+      let url = options.url + '/v1/matchfunction:run';
 
       const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 

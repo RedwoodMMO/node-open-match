@@ -16,9 +16,14 @@ async function deleteOnAssign(ticket: openmatchTicket) {
     await sleep(1);
 
     try {
-      retrievedTicket = await FrontendServiceService.frontendServiceGetTicket({
-        ticketId: ticket.id!,
-      });
+      retrievedTicket = await FrontendServiceService.frontendServiceGetTicket(
+        {
+          ticketId: ticket.id!,
+        },
+        {
+          url: config.get<string>("open-match.frontend.endpoint"),
+        }
+      );
     } catch (e: any) {
       console.error(`Failed to Get Ticket ${ticket.id}, got ${e}`);
       process.exit(1);
@@ -30,9 +35,14 @@ async function deleteOnAssign(ticket: openmatchTicket) {
   );
 
   try {
-    await FrontendServiceService.frontendServiceDeleteTicket({
-      ticketId: ticket.id!,
-    });
+    await FrontendServiceService.frontendServiceDeleteTicket(
+      {
+        ticketId: ticket.id!,
+      },
+      {
+        url: config.get<string>("open-match.frontend.endpoint"),
+      }
+    );
   } catch (e: any) {
     console.error(`Failed to Delete Ticket ${ticket.id}, got ${e}`);
   }
