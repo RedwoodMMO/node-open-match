@@ -5,7 +5,7 @@ import {
   openmatchFunctionConfigType,
   openmatchMatch,
   openmatchMatchProfile,
-} from "@node-open-match/api";
+} from "@open-match/api";
 import { randomInt } from "crypto";
 import waitOn from "wait-on";
 import { generateProfiles } from "./profile";

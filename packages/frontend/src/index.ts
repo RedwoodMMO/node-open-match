@@ -1,6 +1,6 @@
 import config from "config";
 import waitOn from "wait-on";
-import { FrontendServiceService, openmatchTicket } from "@node-open-match/api";
+import { FrontendServiceService, openmatchTicket } from "@open-match/api";
 import { makeTicket } from "./ticket";
 
 // Number of tickets created per iteration

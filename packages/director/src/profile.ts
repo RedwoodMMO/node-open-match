@@ -1,4 +1,4 @@
-import { openmatchMatchProfile } from "@node-open-match/api";
+import { openmatchMatchProfile } from "@open-match/api";
 import { modes } from "./modes";
 
 export function generateProfiles(): openmatchMatchProfile[] {

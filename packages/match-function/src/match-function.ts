@@ -1,4 +1,4 @@
-import { openmatchMatchProfile, openmatchTicket } from "@node-open-match/api";
+import { openmatchMatchProfile, openmatchTicket } from "@open-match/api";
 import { Writable } from "stream";
 import { v4 as uuidv4 } from "uuid";
 

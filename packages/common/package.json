@@ -1,5 +1,5 @@
 {
-  "name": "@node-open-match/common",
+  "name": "@open-match/common",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",

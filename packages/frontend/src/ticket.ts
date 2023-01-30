@@ -1,5 +1,5 @@
 import config from "config";
-import { FrontendServiceService, openmatchTicket } from "@node-open-match/api";
+import { FrontendServiceService, openmatchTicket } from "@open-match/api";
 import { modes } from "./modes";
 
 export async function makeTicket(): Promise<openmatchTicket> {

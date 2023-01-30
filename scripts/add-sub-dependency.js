@@ -9,5 +9,5 @@ if (process.argv.length !== numArgs + 2) {
 
 const devArgString = process.argv[2].toLowerCase() === "true" ? "--dev" : "";
 execSync(
-  `yarn lerna add ${devArgString} ${process.argv[3]} --scope @node-open-match/${process.argv[4]}`
+  `yarn lerna add ${devArgString} ${process.argv[3]} --scope @open-match/${process.argv[4]}`
 );

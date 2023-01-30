@@ -6,7 +6,7 @@ import {
   openmatchQueryTicketsResponse,
   openmatchTicket,
   QueryServiceService,
-} from "@node-open-match/api";
+} from "@open-match/api";
 import concat from "concat-stream";
 import { makeAndStreamMatches } from "./match-function";
 
