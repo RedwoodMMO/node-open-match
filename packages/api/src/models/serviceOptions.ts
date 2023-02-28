@@ -1,7 +1,10 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 // @ts-nocheck
-import axiosStatic, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { AxiosInstance, AxiosRequestConfig } from 'axios';
+
+// require like this to enable vercel/pkg to package it
+const axiosStatic = require("axios/dist/node/axios.cjs");
 
 export interface IRequestOptions extends AxiosRequestConfig {
   /** only in axios interceptor config*/
