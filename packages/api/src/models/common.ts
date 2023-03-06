@@ -74,8 +74,8 @@ Optional, depending on the requirements of the connected systems. */
   persistent_field?: object;
 
   /** Create time is the time the Ticket was created. It is populated by Open
-Match at the time of Ticket creation. */
-  create_time?: Date;
+Match at the time of Ticket creation. ISO string */
+  create_time?: string;
 
   /** Generation gets incremented on GameServers update operations.
 Prevents the MMF from overriding a newer version from the game server.
@@ -128,8 +128,8 @@ Optional, depending on the requirements of the connected systems. */
   persistent_field?: object;
 
   /** Create time is the time the Ticket was created. It is populated by Open
-Match at the time of Ticket creation. */
-  create_time?: Date;
+Match at the time of Ticket creation. ISO string */
+  create_time?: string;
 }
 
 export interface openmatchUpdateBackfillRequest {
@@ -315,11 +315,11 @@ match every Filter. */
   /**  */
   tag_present_filters?: openmatchTagPresentFilter[];
 
-  /** If specified, only Tickets created before the specified time are selected. */
-  created_before?: Date;
+  /** If specified, only Tickets created before the specified time are selected. ISO string */
+  created_before?: string;
 
-  /** If specified, only Tickets created after the specified time are selected. */
-  created_after?: Date;
+  /** If specified, only Tickets created after the specified time are selected. ISO string */
+  created_after?: string;
 }
 
 export interface openmatchReleaseAllTicketsRequest {}
