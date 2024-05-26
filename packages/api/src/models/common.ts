@@ -1,7 +1,7 @@
 /** Generate by swagger-axios-codegen */
 // @ts-nocheck
 
-import { IProtobufStruct } from "./protobuf";
+import { IProtobuf } from "./protobuf";
 
 /* eslint-disable */
 export type IList<T> = Array<T>;
@@ -52,7 +52,7 @@ export interface openmatchAssignment {
   /** Customized information not inspected by Open Match, to be used by the match
 making function, evaluator, and components making calls to Open Match.
 Optional, depending on the requirements of the connected systems. */
-  extensions?: { [key: string]: IProtobufStruct<any> };
+  extensions?: { [key: string]: IProtobuf };
 }
 
 export interface openmatchBackfill {
@@ -66,7 +66,7 @@ when specifying filters. */
   /** Customized information not inspected by Open Match, to be used by
 the Match Function, evaluator, and components making calls to Open Match.
 Optional, depending on the requirements of the connected systems. */
-  extensions?: { [key: string]: IProtobufStruct<any> };
+  extensions?: { [key: string]: IProtobuf };
 
   /** Customized information not inspected by Open Match, to be kept persistent
 throughout the life-cycle of a backfill.
@@ -120,7 +120,7 @@ when specifying filters. */
   /** Customized information not inspected by Open Match, to be used by the match
 making function, evaluator, and components making calls to Open Match.
 Optional, depending on the requirements of the connected systems. */
-  extensions?: { [key: string]: IProtobufStruct<any> };
+  extensions?: { [key: string]: IProtobuf };
 
   /** Customized information not inspected by Open Match, to be kept persistent
 throughout the life-cycle of a ticket.
@@ -273,7 +273,7 @@ export interface openmatchMatch {
   /** Customized information not inspected by Open Match, to be used by the match
 making function, evaluator, and components making calls to Open Match.
 Optional, depending on the requirements of the connected systems. */
-  extensions?: { [key: string]: IProtobufStruct<any> };
+  extensions?: { [key: string]: IProtobuf };
 
   /** Backfill request which contains additional information to the match
 and contains an association to a GameServer.
@@ -298,7 +298,7 @@ export interface openmatchMatchProfile {
   /** Customized information not inspected by Open Match, to be used by the match
 making function, evaluator, and components making calls to Open Match.
 Optional, depending on the requirements of the connected systems. */
-  extensions?: { [key: string]: IProtobufStruct<any> };
+  extensions?: { [key: string]: IProtobuf };
 }
 
 export interface openmatchPool {
