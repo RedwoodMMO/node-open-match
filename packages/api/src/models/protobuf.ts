@@ -21,5 +21,5 @@ export interface IProtobufList<T> {
 
 export interface IProtobufOMDefaultEvaluationCriteria {
   "@type": "openmatch.DefaultEvaluationCriteria";
-  Score: number;
+  score: number;
 }
