@@ -1,7 +1,7 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 // @ts-nocheck
-import { AxiosInstance, AxiosRequestConfig } from 'axios/dist/node/axios.cjs';
+import { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 // require like this to enable vercel/pkg to package it
 const axiosStatic = require("axios/dist/node/axios.cjs");
