@@ -1,7 +1,8 @@
 export type IProtobuf =
   | IProtobufString
   | IProtobufStruct<any>
-  | IProtobufList<any>;
+  | IProtobufList<any>
+  | IProtobufOMDefaultEvaluationCriteria;
 
 export interface IProtobufString {
   "@type": "google.protobuf.StringValue";
@@ -16,4 +17,11 @@ export interface IProtobufStruct<T extends object> {
 export interface IProtobufList<T> {
   "@type": "google.protobuf.ListValue";
   values: T[];
+}
+
+export interface IProtobufOMDefaultEvaluationCriteria {
+  "@type": "openmatch.DefaultEvaluationCriteria";
+  values: {
+    Score: number;
+  };
 }
